@@ -11,11 +11,14 @@ def main():
     clock  = pg.time.Clock()
     bg_img = pg.image.load("fig/pg_bg.jpg") #左辺は背景画像を表すsurface
     tmr = 0
+    kk_img = pg.image.load("fig/3.png")
+    kk_img = pg.transform.flip(kk_img,True,False)
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
         screen.blit(bg_img, [0, 0])
+        screen.blit(kk_img,[300,200])
         pg.display.update()
         tmr += 1        
         clock.tick(10)
