@@ -21,15 +21,18 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
+        key_status = [-1,0]
         key_lst = pg.key.get_pressed() #キーの押下状態を取得
         if key_lst[pg.K_UP]:
-            kk_rct.move_ip((0,-1))
+            key_status[1] = -1
         if key_lst[pg.K_DOWN]:
-            kk_rct.move_ip((0,1))
+            key_status[1] = 1
         if key_lst[pg.K_LEFT]:
-            kk_rct.move_ip((-1,0))
+            key_status[0] = -2
         if key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip((1,0))
+            key_status[0] = 1
+        kk_rct.move_ip(key_status)
+
         x = tmr%3200
         screen.blit(bg_img, [-x, 0])
         screen.blit(bg_reverse_img,[1600-x,0])
